@@ -1,6 +1,6 @@
 # cerebro-translate
 
-> TODO: Describe the installation process
+Cerebro plugin for translate using Google Translate API.
 
 ## Usage
 
