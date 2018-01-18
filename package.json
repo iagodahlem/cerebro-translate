@@ -1,6 +1,6 @@
 {
   "name": "cerebro-translate",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "description": "Cerebro plugin for translate using Google Translate API",
   "repository": "git@github.com:iagodahlem/cerebro-translate.git",
