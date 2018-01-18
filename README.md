@@ -1,12 +1,12 @@
 # cerebro-translate
 
-> [Cerebro](http://cerebroapp.com/) plugin for translation using Google Translate API.
+> [Cerebro](http://cerebroapp.com/) plugin for translate using Google Translate API.
 
 ![Cerebro Translate Plugin Screenshot](screenshot.png)
 
 ## Usage
 
-In Cerebro, type `translate alguma coisa` and the translation will be showed in the result below. By now it only supports tranlating from Portuguese to English.
+In Cerebro, type `translate alguma coisa` and the translation will be shown in the result below. By now it only supports translating from Portuguese to English.
 
 ## Features
 
@@ -15,7 +15,7 @@ In Cerebro, type `translate alguma coisa` and the translation will be showed in 
 ## New Features
 
 - Specify the source and target language to be translated like `translate en pt some text`.
-- Specify only the target language and the source language will be setted to _auto_ `translate pt algún texto`.
+- Specify only the target language and the source language will be set to _auto_ `translate pt algún texto`.
 - Set default source and target languages `translate from my default languages`.
 - Add `translate help` to show usage information.
 - Add debounce when typing.
