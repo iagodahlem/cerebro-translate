@@ -1,6 +1,6 @@
 import { name, keyword } from './constants'
 import translate from './translate'
-import icon from './assets/icon.png'
+import icon from './icon.png'
 
 const fn = ({ term, display }) => {
   const words = term.split(' ')
