@@ -2,7 +2,7 @@ jest.mock('./translate')
 
 import plugin from './'
 import translate from './translate'
-import { ID, NAME } from './constants'
+import { ID, NAME, getLangs } from './constants'
 import icon from './icon.png'
 
 let display
@@ -27,13 +27,20 @@ describe('plugin', () => {
     expect(display.mock.calls.length).toBe(0)
   })
 
-  it('should display default title when there is no query', () => {
+  it('should display default title without query', () => {
     plugin.fn({ display, term: 'translate' })
     plugin.fn({ display, term: 'translate ' })
 
     expect(display).toBeCalled()
     expect(display).toBeCalledWith({ icon, title: NAME })
     expect(display).lastCalledWith({ icon, title: NAME })
+  })
+
+  it('should display list of languages', () => {
+    plugin.fn({ display, term: 'translate l' })
+    plugin.fn({ display, term: 'translate languages' })
+
+    expect(display).toBeCalled()
   })
 
   it('should display loading and the result with no parameters', async () => {

@@ -8,16 +8,18 @@
 
 ## Usage
 
-In Cerebro, type `translate en pt phrase` and the translation will be shown in the result below. You can specify an source and target language respectively. If you pass only target, the source will be set to _auto_, if you don't specify any language, the source will be set to _auto_, and target to _en_.
+In Cerebro, type `translate en pt phrase` and the translation will be shown in the result below. You can specify a source and target language respectively. If you pass only the target, the source will be set to _auto_, if you don't specify any language, the source will be set to _auto_, and target to _en_.
+
+To see available languages type `translate l` or `translate languages`.
 
 ## Features
 
-- Translate using any language passing as argument.
+- Translate using any language passing as an argument.
+- See all availaible languages.
 
-## Features Coming
+## To Do
 
 - Add the ability to set default source and target languages.
-- Add `translate langs` to show availaible languages.
 - Add `translate help` to show usage help.
 - Add debounce when typing.
 - Save history of results to show when type just `translate`.

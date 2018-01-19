@@ -5,6 +5,7 @@ export const SOURCE = 'auto'
 export const TARGET = 'en'
 
 export const getLang = (lang) => LANGS[lang]
+export const getLangs = () => Object.values(LANGS)
 export const api = ({ query, source, target }) => `${GOOGLE_TRANSLATE_API}&sl=${source}&tl=${target}&dt=t&q=${encodeURI(query)}`
 
 export const GOOGLE_TRANSLATE_API = `https://translate.googleapis.com/translate_a/single?client=gtx`
