@@ -1,7 +1,13 @@
 import parse from './parse'
 import translate from './translate'
-import { ID, NAME, KEYWORD, SOURCE, TARGET, getLang } from './constants'
+import { ID, NAME, KEYWORD, SOURCE, TARGET, getLang, getLangs } from './constants'
 import icon from './icon.png'
+
+const langs = getLangs().map(({ code, name }) => ({
+  icon,
+  title: name,
+  subtitle: code,
+}))
 
 const fn = async ({ term, display }) => {
   const { match, query, source, target } = parse(term)
@@ -12,6 +18,11 @@ const fn = async ({ term, display }) => {
 
   if (match && !query) {
     display({ icon, title: NAME })
+    return
+  }
+
+  if (match && (query === 'l' || query === 'languages')) {
+    display(langs)
     return
   }
 
