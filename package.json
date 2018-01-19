@@ -1,6 +1,6 @@
 {
   "name": "cerebro-translate",
-  "version": "1.1.0-0",
+  "version": "1.1.0",
   "main": "dist/index.js",
   "description": "Cerebro plugin for translate using Google Translate API",
   "repository": "git@github.com:iagodahlem/cerebro-translate.git",
@@ -9,7 +9,6 @@
   "scripts": {
     "start": "cerebro-scripts start",
     "build": "cerebro-scripts build",
-    "test": "cerebro-scripts test",
     "clear": "cerebro-scripts clear",
     "prepublish": "yarn clear && yarn build",
     "coverage": "yarn test --coverage && codecov"
