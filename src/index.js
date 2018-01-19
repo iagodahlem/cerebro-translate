@@ -1,34 +1,41 @@
 import parse from './parse'
 import translate from './translate'
-import { NAME, KEYWORD } from './constants'
+import { ID, NAME, KEYWORD, SOURCE, TARGET, getLang } from './constants'
 import icon from './icon.png'
 
-const fn = ({ term, display }) => {
-  const { match, query } = parse(term)
+const fn = async ({ term, display }) => {
+  const { match, query, source, target } = parse(term)
 
   if (!match) {
     return
   }
 
   if (match && !query) {
-    return display({ icon, title: NAME })
+    display({ icon, title: NAME })
+    return
   }
 
   display({
     icon,
-    id: 'translate',
+    id: ID,
     title: 'Loading...',
   })
 
-  translate({ source: 'pt', term: query })
-    .then((response) => {
-      display({
-        icon,
-        id: 'translate',
-        title: response,
-        subtitle: 'English',
-      })
-    })
+  const { code: sourceCode } = source || getLang(SOURCE)
+  const { code: targetCode, name } = target || getLang(TARGET)
+
+  const title = await translate({
+    query,
+    source: sourceCode,
+    target: targetCode,
+  })
+
+  display({
+    icon,
+    id: ID,
+    title,
+    subtitle: name,
+  })
 }
 
 export default {

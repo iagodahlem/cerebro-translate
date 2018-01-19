@@ -6,8 +6,8 @@ export const translate = (params) => {
     .then(data => data[0][0][0])
 }
 
-export const api = ({ source = 'auto', target = 'en', term } = {}) => {
-  return `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${source}&tl=${target}&dt=t&q=${encodeURI(term)}`
+export const api = ({ query, source, target }) => {
+  return `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${source}&tl=${target}&dt=t&q=${encodeURI(query)}`
 }
 
 export default memoize(translate)

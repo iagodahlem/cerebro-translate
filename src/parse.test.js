@@ -11,8 +11,8 @@ describe('parse', () => {
     const expected = {
       match: true,
       query: 'some text',
-      source: { code: 'en', title: 'English' },
-      target: { code: 'pt', title: 'Portuguese' },
+      source: { code: 'en', name: 'English' },
+      target: { code: 'pt', name: 'Portuguese' },
     }
 
     expect(parse(term)).toEqual(expected)
@@ -23,7 +23,7 @@ describe('parse', () => {
     const expected = {
       match: true,
       query: 'some text',
-      target: { code: 'pt', title: 'Portuguese' },
+      target: { code: 'pt', name: 'Portuguese' },
     }
 
     expect(parse(term)).toEqual(expected)
