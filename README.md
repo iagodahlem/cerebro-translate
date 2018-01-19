@@ -6,7 +6,7 @@
 
 > [Cerebro](http://cerebroapp.com/) plugin for translate using Google Translate API.
 
-![Cerebro Translate Plugin Screenshot](screenshot.png)
+![Cerebro Translate Plugin Screenshot](screenshot.gif)
 
 ## Usage
 
