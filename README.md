@@ -8,18 +8,17 @@
 
 ## Usage
 
-In Cerebro, type `translate alguma coisa` and the translation will be shown in the result below. By now it only supports translating from Portuguese to English.
+In Cerebro, type `translate en pt phrase` and the translation will be shown in the result below. You can specify an source and target language respectively. If you pass only target, the source will be set to _auto_, if you don't specify any language, the source will be set to _auto_, and target to _en_.
 
 ## Features
 
-- Translate from Portuguese to English.
+- Translate using any language passing as argument.
 
-## New Features
+## Features Coming
 
-- Specify the source and target language to be translated like `translate en pt some text`.
-- Specify only the target language and the source language will be set to _auto_ `translate pt algún texto`.
-- Set default source and target languages `translate from my default languages`.
-- Add `translate help` to show usage information.
+- Add the ability to set default source and target languages.
+- Add `translate langs` to show availaible languages.
+- Add `translate help` to show usage help.
 - Add debounce when typing.
 - Save history of results to show when type just `translate`.
 
