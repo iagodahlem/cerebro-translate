@@ -1,6 +1,7 @@
 # cerebro-translate
 
 [![Build Status](https://travis-ci.org/iagodahlem/cerebro-translate.svg?branch=master)](https://travis-ci.org/iagodahlem/cerebro-translate)
+[![codecov](https://codecov.io/gh/iagodahlem/cerebro-translate/branch/master/graph/badge.svg)](https://codecov.io/gh/iagodahlem/cerebro-translate)
 
 > [Cerebro](http://cerebroapp.com/) plugin for translate using Google Translate API.
 
