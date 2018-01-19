@@ -1,2 +1,48 @@
-export const name = 'Translate...'
-export const keyword = 'translate'
+export const NAME = 'Translate...'
+export const KEYWORD = 'translate'
+
+export const getLang = (lang) => LANGS[lang]
+
+export const LANGS = {
+  ar: { code: 'ar', title: 'Arab' },
+  be: { code: 'be', title: 'Belarusian' },
+  ca: { code: 'ca', title: 'Catalan' },
+  cs: { code: 'cs', title: 'Czech' },
+  da: { code: 'da', title: 'Danish' },
+  de: { code: 'de', title: 'German' },
+  en: { code: 'en', title: 'English' },
+  eo: { code: 'eo', title: 'Esperanto' },
+  es: { code: 'es', title: 'Spanish' },
+  et: { code: 'et', title: 'Estonian' },
+  fa: { code: 'fa', title: 'Persian' },
+  fi: { code: 'fi', title: 'Finnish' },
+  fr: { code: 'fr', title: 'French' },
+  ga: { code: 'ga', title: 'Irish' },
+  he: { code: 'he', title: 'Hebrew' },
+  hi: { code: 'hi', title: 'Hindi' },
+  hu: { code: 'hu', title: 'Hungarian' },
+  id: { code: 'id', title: 'Indonesian' },
+  is: { code: 'is', title: 'Icelandic' },
+  it: { code: 'it', title: 'Italian' },
+  ja: { code: 'ja', title: 'Japanese' },
+  kk: { code: 'kk', title: 'Kazakh' },
+  ko: { code: 'ko', title: 'Korean' },
+  ky: { code: 'ky', title: 'Kyrgyz' },
+  lt: { code: 'lt', title: 'Lithuanian' },
+  lv: { code: 'lv', title: 'Latvian' },
+  nl: { code: 'nl', title: 'Dutch' },
+  no: { code: 'no', title: 'Norwegian' },
+  pl: { code: 'pl', title: 'Polish' },
+  pt: { code: 'pt', title: 'Portuguese' },
+  ro: { code: 'ro', title: 'Romanian' },
+  ru: { code: 'ru', title: 'Russian' },
+  sk: { code: 'sk', title: 'Slovak' },
+  sl: { code: 'sl', title: 'Slovenian' },
+  sv: { code: 'sv', title: 'Swedish' },
+  th: { code: 'th', title: 'Thai' },
+  tr: { code: 'tr', title: 'Turkish' },
+  uk: { code: 'uk', title: 'Ukrainian' },
+  vi: { code: 'vi', title: 'Vietnamese' },
+  yi: { code: 'yi', title: 'Yiddish' },
+  zh: { code: 'zh', title: 'Chinese' },
+}

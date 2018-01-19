@@ -1,21 +1,17 @@
-import { name, keyword } from './constants'
+import parse from './parse'
 import translate from './translate'
+import { NAME, KEYWORD } from './constants'
 import icon from './icon.png'
 
 const fn = ({ term, display }) => {
-  const words = term.split(' ')
-  const first = words[0]
-  const match = first === keyword || first === `${keyword} `
-  const query = match
-    ? words.filter(word => word !== keyword).join(' ')
-    : false
+  const { match, query } = parse(term)
 
   if (!match) {
     return
   }
 
   if (match && !query) {
-    return display({ icon, title: name })
+    return display({ icon, title: NAME })
   }
 
   display({
@@ -37,7 +33,7 @@ const fn = ({ term, display }) => {
 
 export default {
   icon,
-  name,
-  keyword,
+  name: NAME,
+  keyword: KEYWORD,
   fn,
 }
