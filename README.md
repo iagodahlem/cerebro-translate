@@ -10,7 +10,7 @@
 
 ## Usage
 
-In Cerebro, type `translate en pt phrase` and the translation will be shown in the result below. You can specify a source and target language respectively. If you pass only the target, the source will be set to _auto_, if you don't specify any language, the source will be set to _auto_, and target to _en_.
+In Cerebro, type `translate en pt phrase` or `t en pt phrase` and the translation will be shown in the result below. You can specify a source and target language respectively. If you pass only the target, the source will be set to _auto_, if you don't specify any language, the source will be set to _auto_, and target to _en_.
 
 To see available languages type `translate l` or `translate languages`.
 
