@@ -26,6 +26,11 @@ const fn = async ({ term, display }) => {
     return
   }
 
+  if (match && (query === 'h' || query === 'help')) {
+    display(langs)
+    return
+  }
+
   display({
     icon,
     id: ID,
