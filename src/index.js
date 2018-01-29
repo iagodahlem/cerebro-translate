@@ -9,7 +9,8 @@ const langs = getLangs().map(({ code, name }) => ({
   subtitle: code,
 }))
 
-const fn = async ({ term, display }) => {
+const fn = async ({ term, display, actions }) => {
+  const { copyToClipboard } = actions
   const { match, query, source, target } = parse(term)
 
   if (!match) {
@@ -33,7 +34,7 @@ const fn = async ({ term, display }) => {
   })
 
   const { code: sourceCode } = source || getLang(SOURCE)
-  const { code: targetCode, name } = target || getLang(TARGET)
+  const { code: targetCode, name: targetName } = target || getLang(TARGET)
 
   const title = await translate({
     query,
@@ -45,7 +46,8 @@ const fn = async ({ term, display }) => {
     icon,
     id: ID,
     title,
-    subtitle: name,
+    subtitle: targetName,
+    onSelect: () => copyToClipboard(title),
   })
 }
 
