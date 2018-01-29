@@ -21,13 +21,13 @@ describe('plugin', () => {
     translate.clear()
   })
 
-  it('should not display', () => {
+  it('not display', () => {
     plugin.fn({ display, term: 'will not display' })
 
     expect(display.mock.calls.length).toBe(0)
   })
 
-  it('should display default title without query', () => {
+  it('display default title without query', () => {
     plugin.fn({ display, term: 'translate' })
     plugin.fn({ display, term: 'translate ' })
 
@@ -36,14 +36,14 @@ describe('plugin', () => {
     expect(display).lastCalledWith({ icon, title: NAME })
   })
 
-  it('should display list of languages', () => {
+  it('display list of languages', () => {
     plugin.fn({ display, term: 'translate l' })
     plugin.fn({ display, term: 'translate languages' })
 
     expect(display).toBeCalled()
   })
 
-  it('should display loading and the result with no parameters', async () => {
+  it('display loading and the result with no parameters', async () => {
     plugin.fn({ display, term: 'translate query' })
 
     await translated
@@ -69,7 +69,7 @@ describe('plugin', () => {
     })
   })
 
-  it('should display loading and the result with target', async () => {
+  it('display loading and the result with target', async () => {
     plugin.fn({ display, term: 'translate es pelota' })
 
     await translated
@@ -95,7 +95,7 @@ describe('plugin', () => {
     })
   })
 
-  it('should display loading and the result with source and target', async () => {
+  it('display loading and the result with source and target', async () => {
     plugin.fn({ display, term: 'translate en pt query' })
 
     await translated

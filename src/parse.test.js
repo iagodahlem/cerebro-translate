@@ -1,12 +1,12 @@
 import parse from './parse'
 
 describe('parse', () => {
-  it('should not match', () => {
+  it('not match', () => {
     expect(parse('anything')).toEqual({ match: false, query: '' })
     expect(parse('anything else')).toEqual({ match: false, query: '' })
   })
 
-  it('should match with source and target language', () => {
+  it('match with source and target language', () => {
     const term = 'translate en pt some text'
     const expected = {
       match: true,
@@ -18,7 +18,7 @@ describe('parse', () => {
     expect(parse(term)).toEqual(expected)
   })
 
-  it('should match with the frist letter of the keyword', () => {
+  it('match with the frist letter of the keyword', () => {
     const term = 't en pt some text'
     const expected = {
       match: true,
@@ -30,7 +30,7 @@ describe('parse', () => {
     expect(parse(term)).toEqual(expected)
   })
 
-  it('should match with target language', () => {
+  it('match with target language', () => {
     const term = 'translate pt some text'
     const expected = {
       match: true,
@@ -41,7 +41,7 @@ describe('parse', () => {
     expect(parse(term)).toEqual(expected)
   })
 
-  it('should match', () => {
+  it('match', () => {
     const term = 'translate some text'
     const expected = {
       match: true,
