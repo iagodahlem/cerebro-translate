@@ -4,7 +4,7 @@ const parse = (term) => {
   const words = term.split(' ')
   const [keyword, first, second] = words
 
-  const match = keyword === KEYWORD || keyword === `${KEYWORD} `
+  const match = matchKeyword(keyword)
   const firstLang = getLang(first)
   const secondLang = getLang(second)
 
@@ -32,6 +32,15 @@ const parse = (term) => {
     match,
     query: match ? words.slice(1).join(' ') : '',
   }
+}
+
+const matchKeyword = (keyword) => {
+  const firstLetter = KEYWORD.charAt(0)
+
+  return keyword === KEYWORD
+    || keyword === `${KEYWORD} `
+    || keyword === firstLetter
+    || keyword === `${firstLetter} `
 }
 
 export default parse
