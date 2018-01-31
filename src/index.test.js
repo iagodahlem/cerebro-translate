@@ -5,31 +5,58 @@ import translate from './translate'
 import { ID, NAME, getLangs } from './constants'
 import icon from './icon.png'
 
-let display
-let translated
-
 describe('plugin', () => {
+  let display
+  let actions
+  let translated
+
+  const callPlugin = (term) => {
+    plugin.fn({ display, actions, term })
+  }
+
+  const testDisplayCall = ({ title, subtitle }) => {
+    expect(display).toBeCalled()
+
+    expect(display.mock.calls[0][0].icon).toBe(icon)
+    expect(display.mock.calls[0][0].id).toBe(ID)
+    expect(display.mock.calls[0][0].title).toBe('Loading...')
+
+    expect(display.mock.calls[1][0].icon).toBe(icon)
+    expect(display.mock.calls[1][0].id).toBe(ID)
+    expect(display.mock.calls[1][0].title).toBe(title)
+    expect(display.mock.calls[1][0].subtitle).toBe(subtitle)
+  }
+
+  const testTranslateCall = ({ query, source, target }) => {
+    expect(translate).toBeCalled()
+    expect(translate).toBeCalledWith({
+      query,
+      source,
+      target,
+    })
+  }
+
   beforeEach(() => {
     display = jest.fn()
+    actions = { copyToClipboard: jest.fn() }
     translate.mockImplementation(() => new Promise(resolve => {
       resolve('result')
       translated = Promise.resolve()
     }))
   })
 
-  afterEach(() => {
-    translate.clear()
-  })
-
   it('not display', () => {
-    plugin.fn({ display, term: 'will not display' })
+    callPlugin('will not match')
 
-    expect(display.mock.calls.length).toBe(0)
+    expect(display)
+      .not.toBeCalled()
   })
 
   it('display default title without query', () => {
-    plugin.fn({ display, term: 'translate' })
-    plugin.fn({ display, term: 'translate ' })
+    callPlugin('t')
+    callPlugin('t ')
+    callPlugin('translate')
+    callPlugin('translate ')
 
     expect(display).toBeCalled()
     expect(display).toBeCalledWith({ icon, title: NAME })
@@ -37,87 +64,36 @@ describe('plugin', () => {
   })
 
   it('display list of languages', () => {
-    plugin.fn({ display, term: 'translate l' })
-    plugin.fn({ display, term: 'translate languages' })
+    callPlugin('translate l')
+    callPlugin('translate languages')
 
     expect(display).toBeCalled()
   })
 
   it('display loading and the result with no parameters', async () => {
-    plugin.fn({ display, term: 'translate query' })
+    callPlugin('translate query')
 
     await translated
 
-    expect(display).toBeCalled()
-    expect(display).toBeCalledWith({
-      icon,
-      id: ID,
-      title: 'Loading...',
-    })
-    expect(display).lastCalledWith({
-      icon,
-      id: ID,
-      title: 'result',
-      subtitle: 'English',
-    })
-
-    expect(translate).toBeCalled()
-    expect(translate).toBeCalledWith({
-      query: 'query',
-      source: 'auto',
-      target: 'en',
-    })
+    testDisplayCall({ title: 'result', subtitle: 'English' })
+    testTranslateCall({ query: 'query', source: 'auto', target: 'en' })
   })
 
   it('display loading and the result with target', async () => {
-    plugin.fn({ display, term: 'translate es pelota' })
+    callPlugin('translate es pelota')
 
     await translated
 
-    expect(display).toBeCalled()
-    expect(display).toBeCalledWith({
-      icon,
-      id: ID,
-      title: 'Loading...',
-    })
-    expect(display).lastCalledWith({
-      icon,
-      id: ID,
-      title: 'result',
-      subtitle: 'Spanish',
-    })
-
-    expect(translate).toBeCalled()
-    expect(translate).lastCalledWith({
-      query: 'pelota',
-      source: 'auto',
-      target: 'es',
-    })
+    testDisplayCall({ title: 'result', subtitle: 'Spanish' })
+    testTranslateCall({ query: 'pelota', source: 'auto', target: 'es' })
   })
 
   it('display loading and the result with source and target', async () => {
-    plugin.fn({ display, term: 'translate en pt query' })
+    callPlugin('translate en pt query')
 
     await translated
 
-    expect(display).toBeCalled()
-    expect(display).toBeCalledWith({
-      icon,
-      id: ID,
-      title: 'Loading...',
-    })
-    expect(display).lastCalledWith({
-      icon,
-      id: ID,
-      title: 'result',
-      subtitle: 'Portuguese',
-    })
-
-    expect(translate).toBeCalled()
-    expect(translate).lastCalledWith({
-      query: 'query',
-      source: 'en',
-      target: 'pt',
-    })
+    testDisplayCall({ title: 'result', subtitle: 'Portuguese' })
+    testTranslateCall({ query: 'query', source: 'en', target: 'pt' })
   })
 })
